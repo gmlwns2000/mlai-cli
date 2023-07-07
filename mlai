@@ -1,0 +1,26 @@
+#!/usr/bin/python
+
+import argparse
+import sys, os
+from functools import partial
+
+from mlai_cli.utils.logging import log
+log = partial(log, caller="main")
+from mlai_cli.app import IostatWatcherApp
+
+TASKS = {
+    'iostat': IostatWatcherApp
+}
+
+def main():
+    task_name = sys.argv[1]
+    if task_name in TASKS:
+        TaskCls = TASKS[task_name]
+        task = TaskCls()
+        task.main()
+    else:
+        log('task `'+task_name+'` is not found.')
+        log('available tasks = '+str(list(TASKS.keys())))
+
+if __name__ == '__main__':
+    main()
