@@ -2,13 +2,19 @@
 
 Made by Heejun Lee, 2023
 
+## Install
+
+1. Git clone this repository
+2. Add a repository directory in your PATH
+3. Ready to go!
+
 ## Usages
 
 ### Find Me Free Gpus Tool
 
-This tool is for finding empty gpu is our cluster, using `freegpu` command.
+This tool finds an empty gpu in our cluster using `freegpu` command.
 
-You can query free gpu in everywhere in KAIST network. This script using Grafana backend.
+You can query free gpu in everywhere in the KAIST network. This script uses the Grafana backend.
 
 ```sh
 (base) ainl@ainl-h470-hd3:~/library/mlai-cli$ mlai freegpu --fp16 13
@@ -22,10 +28,10 @@ usage: mlai [-h] [--fp32 FP32] [--bf16 BF16] [--fp16 FP16] [--mem MEM]
 
 optional arguments:
   -h, --help   show this help message and exit
-  --fp32 FP32  Limit lower bownd of FP32 TFLOPs
-  --bf16 BF16  Limit lower bownd of BF16 TFLOPs. You can use this to fileter out older gpu than Ampere.
-  --fp16 FP16  Limit lower bownd of FP16 TFLOPs
-  --mem MEM    Limit lower bownd of VRAM in GB
+  --fp32 FP32  Limit lower bound of FP32 TFLOPs
+  --bf16 BF16  Limit lower bound of BF16 TFLOPs. You can use this to filter out older gpu than Ampere.
+  --fp16 FP16  Limit lower bound of FP16 TFLOPs
+  --mem MEM    Limit lower bound of VRAM in GB
 ```
 
 ### IOStat Tool
@@ -34,7 +40,7 @@ This tool is for monitoring disk input-output using `iostat` command.
 
 However, this tool will compute transferred bytes per transaction. This is needed to measure how much Infiniband is loaded efficiently. Higher bytes per transaction should be better.
 
-**This tool only inspects local disks. Therefore, to monitor the shared disk, you should run this script on the proper server.**
+**This tool only inspects local disks. So, to monitor the shared disk, you should actually run this script on the right server.**
 
 ```sh
 heejun@st1:~/library/mlai-cli$ ./mlai iostat
