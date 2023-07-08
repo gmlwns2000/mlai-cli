@@ -19,13 +19,14 @@ class IostatWatcher:
         self.proc = subprocess.Popen(
             ["iostat", "-d", "1"],
             stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
         )
     
     def sample(self, stats):
         if stats[0][0] == 'Linux': return
         stat_dict = {}
         for stat in stats:
-            dev, tps, read_speed, write_speed, _, _ = stat
+            dev, tps, read_speed, write_speed = stat [:4]
             tps, read_speed, write_speed = float(tps), float(read_speed) * 1024, float(write_speed) * 1024
             stat_dict[dev] = {
                 'tps': tps,
@@ -38,9 +39,11 @@ class IostatWatcher:
     def reading(self):
         stats = []
         for line in iter(self.proc.stdout.readline,''):
+            if isinstance(line, bytes):
+                line = line.decode()
             line = line.strip()
             if len(line) > 0:
-                if line.startswith('Device:'):
+                if line.lower().startswith('device'):
                     self.sample(stats)
                     stats = []
                 else:
@@ -51,3 +54,4 @@ class IostatWatcher:
             self.reading()
         except KeyboardInterrupt as ex:
             self.proc.kill()
+            raise ex
