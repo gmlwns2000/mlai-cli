@@ -10,10 +10,10 @@ class FreeGpuApp:
     
     def main(self):
         parser = argparse.ArgumentParser()
-        parser.add_argument('--fp32', default=0, type=float)
-        parser.add_argument('--bf16', default=0, type=float)
-        parser.add_argument('--fp16', default=0, type=float)
-        parser.add_argument('--mem', default=0, type=float)
+        parser.add_argument('--fp32', default=0, type=float, help='Limit lower bownd of FP32 TFLOPs')
+        parser.add_argument('--bf16', default=0, type=float, help='Limit lower bownd of BF16 TFLOPs. You can use this to fileter out older gpu than Ampere.')
+        parser.add_argument('--fp16', default=0, type=float, help='Limit lower bownd of FP16 TFLOPs')
+        parser.add_argument('--mem', default=0, type=float, help='Limit lower bownd of VRAM in GB')
         args = parser.parse_args(sys.argv[2:])
         
         cluster, gpus = self.monitor.query_free_gpus(
