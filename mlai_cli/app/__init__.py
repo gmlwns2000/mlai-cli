@@ -1,1 +1,2 @@
-from .iostat.main import IostatWatcherApp
+from .iostat import IostatWatcherApp
+from .freegpu import FreeGpuApp

@@ -1,8 +1,8 @@
 import functools
-from ...utils.logging import log
+from ..utils.logging import log
 log = functools.partial(log, caller='iostat.main')
-from ...utils import human_readable
-from ...iostat.watcher import IostatWatcher, IostatWatcherCallbacks
+from ..utils import human_readable
+from ..iostat.watcher import IostatWatcher, IostatWatcherCallbacks
 
 class RunningAverage:
     def __init__(self, count=100):

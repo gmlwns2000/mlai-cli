@@ -6,10 +6,11 @@ from functools import partial
 
 from mlai_cli.utils.logging import log
 log = partial(log, caller="main")
-from mlai_cli.app import IostatWatcherApp
+from mlai_cli.app import IostatWatcherApp, FreeGpuApp
 
 TASKS = {
-    'iostat': IostatWatcherApp
+    'iostat': IostatWatcherApp,
+    'freegpu': FreeGpuApp
 }
 
 def main():
