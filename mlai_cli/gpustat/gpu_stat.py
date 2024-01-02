@@ -8,13 +8,13 @@ log = get_log('gpu_stat')
 from ..secrets.cluster_def import CLUSTER, NodeDef, GRAFANA_NODE_ADDR
 
 class GpuSpec:
-    def __init__(self, fp32_tflops, fp16_tflops, bf16_tflops, mem_gb) -> None:
+    def __init__(self, fp32_tflops, fp16_tflops, bf16_tflops, mem_gb):
         self.fp32_tflops = fp32_tflops
         self.fp16_tflops = fp16_tflops
         self.bf16_tflops = bf16_tflops
         self.mem_gb = mem_gb
     
-    def __repr__(self) -> str:
+    def __repr__(self):
         return "GpuSpec(fp32={}, fp16={}, bf16={}, vram={})".format(self.fp32_tflops, self.fp16_tflops, self.bf16_tflops, self.mem_gb)
 
 GPU_SPECS = {
@@ -100,7 +100,7 @@ class GpuNode:
         self.desc = node_def
         self.instances = []
     
-    def __repr__(self) -> str:
+    def __repr__(self):
         return "GpuNode({}, n_gpus={})".format(self.desc.name, len(self.instances))
     
     def update(self):
@@ -170,7 +170,7 @@ class GpuInstance:
         self.index = index
         self.spec = GPU_SPECS.get(self.name, None)
     
-    def __repr__(self) -> str:
+    def __repr__(self):
         return "GpuInstance(node={}, index={}, name={}, mem={:.1f}%, compute={:.1f}%, spec={})".format(
             self.node,
             self.index,

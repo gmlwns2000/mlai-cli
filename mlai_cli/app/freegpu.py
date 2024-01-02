@@ -5,7 +5,7 @@ import sys
 log = get_log('freegpu')
 
 class FreeGpuApp:
-    def __init__(self) -> None:
+    def __init__(self):
         self.monitor = GpuStat()
     
     def main(self):
