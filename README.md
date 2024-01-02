@@ -5,8 +5,9 @@ Made by Heejun Lee, 2023
 ## Install
 
 1. Git clone this repository
-2. Add a repository directory in your PATH
-3. Ready to go!
+2. Ask Heejun and get some secrets file.
+3. Add a repository directory in your PATH
+4. Ready to go!
 
 ## Usages
 
@@ -48,3 +49,14 @@ heejun@st1:~/library/mlai-cli$ ./mlai iostat
 [MLAI-CLI:iostat.main] sdb per_transaction: 44.0 KB/T read: 5.1 MB/S write: 9.6 MB/S
 [MLAI-CLI:iostat.main] sdb per_transaction: 78.2 KB/T read: 4.4 MB/S write: 38.5 MB/S
 ```
+
+## Contribution
+
+You **have to be careful about the security of our server cluster if you wanna commit something here!**
+
+- Do not reveal any **addresses**
+- Do not reveal any **detailed server structures**
+- Do not reveal any **RPC ports**
+- Do not reveal any **directory structure**
+
+Keep those things in the `mlai_cli/secrets` module. Ask Heejun to get secrets.
